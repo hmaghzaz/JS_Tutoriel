@@ -1,9 +1,11 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-currentResult += 10;
+//Funciton addition
+function add() {
+  currentResult = currentResult + userInput.value;
+  outputResult(currentResult, "");
+}
 
-let calucationDescription = `(${defaultResult} + 10)`;
-let errorMessage = "An error " + "is occurred!";
-
-outputResult(currentResult, calucationDescription);
+//listening to event add buton
+addBtn.addEventListener("click", add);
