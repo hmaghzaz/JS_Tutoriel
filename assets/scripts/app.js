@@ -3,7 +3,7 @@ let currentResult = defaultResult;
 
 //Funciton addition
 function add() {
-  currentResult = currentResult + userInput.value;
+  currentResult = currentResult + parseInt(userInput.value);
   outputResult(currentResult, "");
 }
 
