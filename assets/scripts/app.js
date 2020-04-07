@@ -6,42 +6,45 @@ function getUserNumberInput() {
   return parseInt(userInput.value);
 }
 
-//Function to write to calculation operation
+// write the calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
-  outputResult(currentResult, calcDescription);
+  outputResult(currentResult, calcDescription); //from vendor file
 }
 
 //Funciton addition
 function add() {
   const entredNumber = getUserNumberInput();
   const intialResutl = currentResult;
-  currentResult = currentResult + entredNumber;
+  currentResult += entredNumber;
   createAndWriteOutput("+", intialResutl, entredNumber);
 }
 
+//Subtract function
 function subtract() {
   const entredNumber = getUserNumberInput();
   const intialResutl = currentResult;
-  currentResult = currentResult - entredNumber;
+  currentResult -= entredNumber;
   createAndWriteOutput("-", intialResutl, entredNumber);
 }
 
+//multipy function
 function multiply() {
   const entredNumber = getUserNumberInput();
   const intialResutl = currentResult;
-  currentResult = currentResult * entredNumber;
+  currentResult *= entredNumber;
   createAndWriteOutput("*", intialResutl, entredNumber);
 }
 
+//devide function
 function devide() {
   const entredNumber = getUserNumberInput();
   const intialResutl = currentResult;
-  currentResult = currentResult / entredNumber;
+  currentResult /= entredNumber;
   createAndWriteOutput("/", intialResutl, entredNumber);
 }
 
-//listening to event add buton
+//listening to event buton
 addBtn.addEventListener("click", add);
 subtractBtn.addEventListener("click", subtract);
 multiplyBtn.addEventListener("click", multiply);
