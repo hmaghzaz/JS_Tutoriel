@@ -13,20 +13,31 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   outputResult(currentResult, calcDescription); //from vendor file
 }
 
+//function write in log object
+function writeToLog(
+  operationIdentifier,
+  prevResult,
+  operationNumber,
+  newResult
+) {
+  const logEntery = {
+    operation: operationIdentifier,
+    prevResult: prevResult,
+    number: operationNumber,
+    result: newResult,
+  };
+
+  logEnteries.push(logEntery);
+  console.log(logEnteries);
+}
+
 //Funciton addition
 function add() {
   const entredNumber = getUserNumberInput();
   const intialResutl = currentResult;
   currentResult += entredNumber;
   createAndWriteOutput("+", intialResutl, entredNumber);
-  logEntery = {
-    number: intialResutl,
-    operation: "ADD",
-    prevResult: intialResutl,
-    result: currentResult,
-  };
-  //logEnteries.push(entredNumber);
-  console.log(logEntery);
+  writeToLog("ADD", intialResutl, entredNumber, currentResult);
 }
 
 //Subtract function
@@ -35,6 +46,7 @@ function subtract() {
   const intialResutl = currentResult;
   currentResult -= entredNumber;
   createAndWriteOutput("-", intialResutl, entredNumber);
+  writeToLog("SUBSTRUCT", intialResutl, entredNumber, currentResult);
 }
 
 //multipy function
@@ -43,6 +55,7 @@ function multiply() {
   const intialResutl = currentResult;
   currentResult *= entredNumber;
   createAndWriteOutput("*", intialResutl, entredNumber);
+  writeToLog("MUTLIPLY", intialResutl, entredNumber, currentResult);
 }
 
 //devide function
@@ -51,6 +64,7 @@ function devide() {
   const intialResutl = currentResult;
   currentResult /= entredNumber;
   createAndWriteOutput("/", intialResutl, entredNumber);
+  writeToLog("DEVIDE", intialResutl, entredNumber, currentResult);
 }
 
 //listening to event buton
