@@ -31,40 +31,55 @@ function writeToLog(
   console.log(logEnteries);
 }
 
+//Calculation
+function caluclatResult(calculationType) {
+  const entredNumber = getUserNumberInput();
+  if (
+    (calculationType !== "ADD" &&
+      calculationType !== "SUBTRACT" &&
+      calculationType !== "MUTLIPLY" &&
+      calculationType !== "DEVIDE") ||
+    !entredNumber
+  ) {
+    return;
+  }
+  const intialResutl = currentResult;
+  let mathOperator;
+  if (calculationType === "ADD") {
+    currentResult += entredNumber;
+    mathOperator = "+";
+  } else if (calculationType === "SUBTRACT") {
+    currentResult -= entredNumber;
+    mathOperator = "-";
+  } else if (calculationType === "MUTLIPLY") {
+    currentResult *= entredNumber;
+    mathOperator = "*";
+  } else if (calculationType === "DEVIDE") {
+    currentResult /= entredNumber;
+    mathOperator = "/";
+  }
+  createAndWriteOutput(mathOperator, intialResutl, entredNumber);
+  writeToLog(calculationType, intialResutl, entredNumber, currentResult);
+}
+
 //Funciton addition
 function add() {
-  const entredNumber = getUserNumberInput();
-  const intialResutl = currentResult;
-  currentResult += entredNumber;
-  createAndWriteOutput("+", intialResutl, entredNumber);
-  writeToLog("ADD", intialResutl, entredNumber, currentResult);
+  caluclatResult("ADD");
 }
 
 //Subtract function
 function subtract() {
-  const entredNumber = getUserNumberInput();
-  const intialResutl = currentResult;
-  currentResult -= entredNumber;
-  createAndWriteOutput("-", intialResutl, entredNumber);
-  writeToLog("SUBSTRUCT", intialResutl, entredNumber, currentResult);
+  caluclatResult("SUBTRACT");
 }
 
 //multipy function
 function multiply() {
-  const entredNumber = getUserNumberInput();
-  const intialResutl = currentResult;
-  currentResult *= entredNumber;
-  createAndWriteOutput("*", intialResutl, entredNumber);
-  writeToLog("MUTLIPLY", intialResutl, entredNumber, currentResult);
+  caluclatResult("MUTLIPLY");
 }
 
 //devide function
 function devide() {
-  const entredNumber = getUserNumberInput();
-  const intialResutl = currentResult;
-  currentResult /= entredNumber;
-  createAndWriteOutput("/", intialResutl, entredNumber);
-  writeToLog("DEVIDE", intialResutl, entredNumber, currentResult);
+  caluclatResult("DEVIDE");
 }
 
 //listening to event buton
