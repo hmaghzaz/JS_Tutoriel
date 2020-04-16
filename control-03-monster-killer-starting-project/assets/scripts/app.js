@@ -11,6 +11,7 @@ const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
 const BattleLog = [];
+let lastLogEntry;
 
 // max life is a number entred by user
 const enteredValue = prompt("Maximum life for you and the monster", "100");
@@ -193,7 +194,21 @@ function healPlayerHandle() {
 }
 // this function is called when the show log button is clicked
 function printLogHandler() {
-  console.log(BattleLog);
+  //console.log(BattleLog); display one event by one in the console;
+  let i = 0;
+  for (const logEntry of BattleLog) {
+    if ((!lastLogEntry && lastLogEntry !== 0) || lastLogEntry < i) {
+      console.log(`#${i}`);
+      for (const key in logEntry) {
+        if (key === "event") {
+          console.log(`${key} => ${logEntry[key]}`);
+        }
+      }
+      lastLogEntry = i;
+      break;
+    }
+    i++;
+  }
 }
 
 // this is listnere to the click buttons
